@@ -96,3 +96,7 @@ Read [AGENTS.md](AGENTS.md) for the package layout, ownership boundaries and
 validation policy. Do not add or commit unit tests. Validate through
 reproducible execution and short training or evaluation runs, and provide the
 commands, configurations, metrics and artifacts that support each claim.
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE). The code and any trained models are provided as is, without warranty of any kind. Nothing here has been validated as safe on a physical robot; take every precaution when deploying a policy on hardware.

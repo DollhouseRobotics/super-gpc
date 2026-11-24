@@ -7,6 +7,8 @@ name = "super-gpc"
 version = "0.1.0"
 description = "FSQ motion tracker, motion prior and CoLA task training for the Dollhouse G1 on MJLab"
 requires-python = ">=3.11,<3.14"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 dependencies = [
   "mjlab @ git+https://github.com/mujocolab/mjlab@dcdf6ce519abfd2ea45e9503ae6fb650b75bb869",
   "dollhouse-robots @ git+https://github.com/DollhouseRobotics/robots@62aebbf1bb3f8b2518aceef45ed39e8b475744cb",
