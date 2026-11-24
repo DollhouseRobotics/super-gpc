@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "super-gpc"
+version = "0.1.0"
+description = "FSQ motion tracker, motion prior and CoLA task training for the Dollhouse G1 on MJLab"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "mjlab @ git+https://github.com/mujocolab/mjlab@dcdf6ce519abfd2ea45e9503ae6fb650b75bb869",
+  "dollhouse-robots @ git+https://github.com/DollhouseRobotics/robots@62aebbf1bb3f8b2518aceef45ed39e8b475744cb",
+  "miniverse-sdk==0.9.2",
+  "onnx>=1.17",
+  "onnxruntime>=1.22",
+  "huggingface-hub>=0.34",
+]
+
+[project.optional-dependencies]
+cu130 = ["torch>=2.14"]
+cpu = ["torch>=2.14"]
+
+[project.scripts]
+gpc-prepare-motions = "super_gpc.scripts.prepare_motions:main"
+gpc-train-stage1 = "super_gpc.scripts.train_stage1:main"
+gpc-evaluate-stage1 = "super_gpc.scripts.evaluate_stage1:main"
+gpc-train-stage2 = "super_gpc.scripts.train_stage2:main"
+gpc-evaluate-stage2 = "super_gpc.scripts.evaluate_stage2:main"
+gpc-evaluate-stage2-quality = "super_gpc.scripts.evaluate_stage2_quality:main"
+gpc-train-joystick = "super_gpc.scripts.train_joystick:main"
+gpc-render-joystick = "super_gpc.scripts.render_joystick:main"
+gpc-collect-joystick-starts = "super_gpc.scripts.collect_joystick_starts:main"
+gpc-train-get-down = "super_gpc.scripts.train_get_down:main"
+
+[project.entry-points."mjlab.tasks"]
+super_gpc = "super_gpc.tasks"
+
+[tool.uv]
+conflicts = [[{ extra = "cu130" }, { extra = "cpu" }]]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu130", extra = "cu130" },
+  { index = "pytorch-cpu", extra = "cpu" },
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/super_gpc"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.ruff]
+line-length = 100
+indent-width = 2
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

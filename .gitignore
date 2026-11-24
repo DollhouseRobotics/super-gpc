@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+runs/
+checkpoints/
+data/
+.amp/in/
+.env
+.env.*
+!.env.example
