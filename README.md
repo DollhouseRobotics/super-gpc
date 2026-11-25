@@ -1,5 +1,9 @@
 # super-gpc
 
+[![SuperGPC: the G1 policy in simulation, pushed and pulled while walking, knocked over, then lying down and getting back up](docs/assets/supergpc-preview.webp)](https://www.dollhouserobots.com/posts/super-gpc)
+
+Article: [SuperGPC: training a humanoid autoregressive motion policy fast, on one GPU](https://www.dollhouserobots.com/posts/super-gpc)
+
 Generative Pretrained Controller training for Dollhouse Robotics' custom
 27-actuator G1, built as a downstream project of
 [MJLab](https://github.com/mujocolab/mjlab). MJLab supplies the manager-based
