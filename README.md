@@ -64,6 +64,12 @@ Without `--datasets`, `gpc-prepare-motions` prepares the 50-hour corpus alone.
 Get-down takes its AMP reference clips from `bones-floor`, so its motion
 directory must include that dataset.
 
+The prepared datasets already exclude 173 BONES-SEED clips that convulse or
+shake, such as seizure-like motion on the floor and shivering.
+[docs/removed-shaking-motions.csv](docs/removed-shaking-motions.csv) lists each
+clip with the reason (`convulsing` or `shaking`) and the dataset it was removed
+from.
+
 Every training command resumes when re-run with the same `--run-dir`; the
 stored `config.json` is authoritative. Each script's `--help` documents its
 arguments, and `--set key=value` overrides configuration fields when a run is
